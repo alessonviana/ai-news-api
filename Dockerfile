@@ -1,7 +1,7 @@
 FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
+RUN npm install --only=production --no-audit
 COPY server.js ./
 RUN mkdir -p /data && chown -R 1001:1001 /data /app
 USER 1001
